@@ -1,0 +1,11 @@
+#!/bin/bash
+# Monitoring the free filesystem space disk
+FU=$(df -H | grep "sda2" | awk '{print $5}' | tr -d %)
+TO="nikhithnaini1234@gmail.com"
+
+if [[ $FU -ge 20 ]]
+then
+  echo "Warning, disk space is low - $FU %" | mail -s "Disk SPACE ALERT!" "$TO"
+else
+  echo "All good"
+fi
